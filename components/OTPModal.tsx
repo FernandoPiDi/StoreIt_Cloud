@@ -1,4 +1,4 @@
-"use  client";
+"use client";
 
 import {
   AlertDialog,
@@ -15,10 +15,8 @@ import {
   InputOTPGroup,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
-
 import Image from "next/image";
 import React, { useState } from "react";
-
 import { Button } from "./ui/button";
 import { verifySecret, sendEmailOTP } from "@/lib/actions/user.actions";
 import { useRouter } from "next/navigation";
@@ -38,13 +36,19 @@ const OtpModal = ({
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setIsLoading(true);
+
+    console.log({ accountId, password });
+
     try {
       const sessionId = await verifySecret({ accountId, password });
+
+      console.log({ sessionId });
 
       if (sessionId) router.push("/");
     } catch (error) {
       console.log("Failed to verify OTP", error);
     }
+
     setIsLoading(false);
   };
 
@@ -102,6 +106,7 @@ const OtpModal = ({
                 />
               )}
             </AlertDialogAction>
+
             <div className="subtitle-2 mt-2 text-center text-light-100">
               Didn&apos;t get a code?
               <Button
