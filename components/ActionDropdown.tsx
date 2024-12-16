@@ -29,7 +29,7 @@ import {
   updateFileUsers,
 } from "@/lib/actions/file.actions";
 import { usePathname } from "next/navigation";
-import { FileDetails, ShareInput } from "@/components/ActionsModalcontent";
+import { FileDetails, ShareInput } from "@/components/ActionsModalContent";
 
 const ActionDropdown = ({ file }: { file: Models.Document }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
